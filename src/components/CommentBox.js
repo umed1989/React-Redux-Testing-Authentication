@@ -5,18 +5,6 @@ import * as actions from "actions";
 class CommentBox extends Component {
   state = { comment: "" };
 
-  componentDidMount() {
-    return this.shouldNavigateAway();
-  }
-
-  componentDidUpdate() {
-    return this.shouldNavigateAway();
-  }
-  shouldNavigateAway() {
-    if (!this.props.auth) {
-      this.props.history.push("/");
-    }
-  }
   handleChage = e => {
     this.setState({ comment: e.target.value });
   };
@@ -44,13 +32,7 @@ class CommentBox extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    auth: state.auth
-  };
-}
-
 export default connect(
-  mapStateToProps,
+  null,
   actions
 )(CommentBox);
