@@ -4,6 +4,19 @@ import * as actions from "actions";
 
 class CommentBox extends Component {
   state = { comment: "" };
+
+  componentDidMount() {
+    return this.shouldNavigateAway();
+  }
+
+  componentDidUpdate() {
+    return this.shouldNavigateAway();
+  }
+  shouldNavigateAway() {
+    if (!this.props.auth) {
+      console.log("You have to leave");
+    }
+  }
   handleChage = e => {
     this.setState({ comment: e.target.value });
   };
@@ -31,7 +44,13 @@ class CommentBox extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    auth: state.auth
+  };
+}
+
 export default connect(
-  null,
+  mapStateToProps,
   actions
 )(CommentBox);
