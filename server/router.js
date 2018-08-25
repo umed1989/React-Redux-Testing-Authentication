@@ -1,8 +1,6 @@
+const Authentication = require("./controllers/authentication");
 module.exports = app => {
   app.get("/", (req, res, next) =>
-    res.send({
-      hello: "che kardi e bacha?"
-    })
+    res.send(["your", "get", "request", "is working"])
   );
-  app.post("/post");
 };

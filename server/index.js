@@ -5,22 +5,21 @@ const morgan = require("morgan");
 const router = require("./router");
 const app = express();
 const mongoose = require("mongoose");
+const keys = require("./config/keys");
 
 //DB Setup
 
 mongoose.connect(
-  "mongodb://localhost:27017/auth",
-  {
-    useNewUrlParser: true
-  }
+  keys.mongodb.dbURI,
+  { useNewUrlParser: true },
+  () => console.log("connected to Mongo DB")
 );
 // App Setup
 app.use(morgan("combined")); //login framework
 app.use(bodyParser.json({ type: "*/*" }));
 router(app);
-//Server Setup
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8000;
 const server = http.createServer(app);
 server.listen(port);
 
