@@ -1,5 +1,11 @@
 import React from "react";
+import Header from "./Header";
+import { BrowserRouter } from "react-router-dom";
 
 export default () => {
-  return <div>Hi I am the app</div>;
+  return (
+    <BrowserRouter>
+      <Header />
+    </BrowserRouter>
+  );
 };
